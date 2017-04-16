@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>How to Install Django 1.9 on Ubuntu</title>
+<meta name="description" content="How to Install Django 1.9 on Ubuntu" />
+<meta name="Keywords" content="Short, articles, tutorials, latest, technologies, simple, easy, steps, specialized, Mobile Computing, Cloud Computing, Open Source, Linux, Microsoft, General IT, Computer Hardware." />
+<link rel="stylesheet" type="text/css" href="http://www.tutorialspoint.com/articles/wp-content/themes/bigfoot/style.css" media="screen" />
+<base href="https://www.tutorialspoint.com/" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="471319149685276" />
+<meta property="og:site_name" content="www.tutorialspoint.com" />
+<meta name="robots" content="index, follow"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script type="text/javascript" src="/theme/js/script-min-v4.js"></script>
+<link rel="stylesheet" href="/theme/css/style-min.css?v=2">
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #316441 url(/images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #316441 !important;}
+.submenu-item{ border-bottom: 2px solid #316441 !important; border-top: 2px solid #316441 !important }
+.ace_scroller{overflow: auto!important;}
+</style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+</head>
+<body onload="prettyPrint()">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img  src="/images/loading-cg.gif" alt="" width="70" height="70" />
+   </div>
+</div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="index.htm" title="tutorialspoint">
+      <img alt="tutorialspoint" src="images/logo.png">
+      </a>
+      </h1>			
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="/about/about_careers.htm" style="background: #fffb09; font-weight: bold;"><i class="icon icon-suitcase"></i> Jobs</a></li>
+            <li> <a href="http://www.sendfiles.net"><i class="fa fa-send"></i> &nbsp;SENDFiles</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/whiteboard.htm"><img src="theme/css/icons/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/netmeeting.php"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="/online_dev_tools.htm"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="/articles/index.php"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+         <!-- search code here  --> 
+      <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+   </div>
+  
+   <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="index.htm"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown" id="liTL"><a class="dropdown" href="javascript:void(0);"><span class="tut-lib"> Tutorials Library <i class="fa-caret-down"></i></span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="codingground.htm"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="tutor_connect/index.php"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="videotutorials/index.htm"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" type="text" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == 'Search your favorite tutorials...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search your favorite tutorials...';}" autocomplete="off">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+         <div class="submenu-item sub-main-menu" id="top-sub-menu"></div>
+         
+      </div>
+   </div>	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-9 middle-col">
+<div class="post-header"> <h2 class="post-title">How to Install Django 1.9 on Ubuntu</h2>
+<p class="post-date">
+<em id="author_title">
+<span style="display: inline-block;"><img src="http://www.tutorialspoint.com/articles/wp-content/uploads/userphoto/2690.thumbnail.jpg" alt="Sairam Krishna" width="48" height="36" class="photo" /></span>
+<a href="http://www.tutorialspoint.com/articles/author/sairam" title="Posts by Sairam Krishna" rel="author">Sairam Krishna</a>, Posted on   May 18, 2016, filed in: <a href="http://www.tutorialspoint.com/articles/category/information-technology" rel="category tag">Information Technology</a>, <a href="http://www.tutorialspoint.com/articles/category/linux-operating-system" rel="category tag">Linux</a></em>		    </p> <!--end .post-date-->	    	    </div> <!--end .post-header-->	    	   	<div class="clear"></div>	    		   	
+<div class="entry">	 
+<div class="clearer"></div>
+<br>
+<p style="text-align: justify;">Django is an excessive stage Python internet framework that encourages speedy development, clean along with pragmatic layout. It takes a lot of care in building a trouble free web development programming language so that you can start writing your app in an easier manner without having to reinvent the wheel. It is an open-source software. This article provides the necessary instructions on &#8211; &#8220;How to install Django 1.9 on Ubuntu&#8221;.</p>
+<p>Before we start with the Django installation, we should update the Ubuntu repository as shown in the below command-</p>
+<pre>$ sudo apt-get update
+</pre>
+<h3>Installing Django</h3>
+<p style="text-align: justify;">There are so many methods which are available to install Django. Here, we&#8217;re trying to give different approaches to installing Django with <b>PIP</b>.</p>
+<p style="text-align: justify;"><strong>PIP</strong> is a package management system for python. Python packages can be managed and installed easily with <b>PIP</b>. Python has its own central package repository server so that we can download the python packages from there which is called Python Package Index (PyPI). In this article, we will use Python version 3 for Django as recommended from the official Django site. To install python3-pip from the Ubuntu repository, use the following command-</p>
+<p style="text-align: justify;">In this article, we will be using Python version 3 for Django as recommended from the official Django site. To install python3-pip from the Ubuntu repository, use the following command-</p>
+<pre>$ sudo apt-get install python3-pip
+</pre>
+<p>To create a symlink for PIP3 to PIP, use the following commands &#8211;</p>
+<pre>$ which pip3
+$ ln -s /usr/bin/pip3 /usr/bin/pip
+</pre>
+<p>Now verify the version of PIP using the following command &#8211;</p>
+<pre>$ pip -V
+</pre>
+<p>The sample output should be like this &#8211;</p>
+<pre>pip 1.5.6 from /usr/lib/python3/dist-packages (python 3.4)
+</pre>
+<h3>Installing Django with PIP</h3>
+<p>To install Django with pip, use the following command &#8211;</p>
+<pre>$ sudo pip install django
+</pre>
+<p>The sample output should be like this &#8211;</p>
+<pre>Collecting django
+  Downloading Django-1.9.6-py2.py3-none-any.whl (6.6MB)
+    100% |████████████████████████████████| 6.6MB 179kB/s 
+Installing collected packages: django
+Successfully installed django-1.9.6
+</pre>
+<p>To install Django-admin, use the following command &#8211;</p>
+<pre>$ sudo apt install python-django-common
+</pre>
+<p>The sample output should be like this &#8211;</p>
+<pre>Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  apport-hooks-elementary contractor libgda-5.0-4 libgda-5.0-common
+  libgranite-common libgranite3 libgsignon-glib1 libindicate5 libnoise-core0
+  libtagc0 mysql-server-5.7 mysql-server-core-5.7
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  python-django-common
+0 upgraded, 1 newly installed, 0 to remove and 187 not upgraded.
+Need to get 1,182 kB of archives.
+After this operation, 14.6 MB of additional disk space will be used.
+Get:1 http://in.archive.ubuntu.com/ubuntu xenial/main amd64 python-django-common all 1.8.7-1ubuntu5 [1,182 kB]
+.................................................................................................
+</pre>
+<p>When the installation is done, check the <strong>Django</strong> version with the following command-</p>
+<pre># django-admin --version
+</pre>
+<p>The sample output should be like this-</p>
+<pre>1.9.6
+</pre>
+<h3>Creating a New Project</h3>
+<p>To create a new project called &#8216;myblog&#8217; with the django-admin, use the following command &#8211;</p>
+<pre># django-admin startproject myblog
+</pre>
+<p>Now enter into the project using CD command as shown below &#8211;</p>
+<pre># cd myblog/
+</pre>
+<p>Now run the &#8216;manage.py&#8217; file as shown below &#8211;</p>
+<pre>~/myblog# python manage.py runserver
+</pre>
+<p>The sample output should be like this &#8211;</p>
+<pre>May 17, 2016 - 05:07:05
+Django version 1.9.6, using settings 'myblog.settings'
+Starting development server at <span style="color: #ff9900;">http://127.0.0.1:8000/</span>
+Quit the server with CONTROL-C.
+</pre>
+<p>Now, open any favorite browser and enter the server URL. In our case it is http://127.0.0.1:8000. the sample output should be like this &#8211;</p>
+<p><img class="alignnone  wp-image-17941" src="http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-43-07.png" alt="Screenshot from 2016-05-17 10-43-07" width="776" height="137" srcset="http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-43-07.png 1092w, http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-43-07-300x53.png 300w, http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-43-07-1024x181.png 1024w" sizes="(max-width: 776px) 100vw, 776px" /><br />
+Now we will configure &#8220;Django admin&#8221;, wherein Django will automatically generate a database for a superuser.</p>
+<p>But before we create a superuser, run the following command &#8211;</p>
+<pre>$ python manage.py migrate
+</pre>
+<p>The sample output should be like this &#8211;</p>
+<pre> Rendering model states... DONE
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying sessions.0001_initial... OK
+</pre>
+<p>Now create the admin user as shown below &#8211;</p>
+<pre>$ python manage.py createsuperuser
+</pre>
+<p>The sample output should be like this &#8211;</p>
+<pre>Username (leave blank to use 'root'): tutorialspoint
+Email address: sairamkrishna@tutorialspoint.com
+Password: 
+Password (again): 
+Superuser created successfully.
+</pre>
+<p>The Django super user has been added, now you can use the runserver command to start Django admin. Open the browser and visit the Django admin page as shown below &#8211;</p>
+<pre># python manage.py runserver
+</pre>
+<p>Open your browser and run server link, in this case, it should be like this &#8211;</p>
+<pre>http://127.0.0.1:8000/admin
+</pre>
+<p>The sample output should be like this &#8211;</p>
+<img class="alignnone  wp-image-17942" src="http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-52-44.png" alt="Screenshot from 2016-05-17 10-52-44" width="767" height="436" srcset="http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-52-44.png 1019w, http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-52-44-300x170.png 300w" sizes="(max-width: 767px) 100vw, 767px" />
+<p>Enter your admin user name and password. Now the sample output should be like this &#8211;</p>
+<p><img class="alignnone  wp-image-17945" src="http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-58-39-1024x318.png" alt="Screenshot from 2016-05-17 10-58-39" width="792" height="246" srcset="http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-58-39-1024x318.png 1024w, http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-58-39-300x93.png 300w, http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-58-39.png 1296w" sizes="(max-width: 792px) 100vw, 792px" /><br />
+That&#8217;s it. After this article, you will be able to understand – How to Install Django 1.9 on Ubuntu, we will come up with more Linux based tricks and tips. Keep reading!</p>
+	   
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:inline-block;width:735px;height:300px"
+     data-ad-client="ca-pub-7133395778201029"
+     data-ad-slot="4907341328"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<div class="postnavi"> <div class="left"> <a href="http://www.tutorialspoint.com/articles/xdm-is-a-download-manager-for-linux-that-ramps-up-your-speed-to-500" rel="prev">&laquo; Previous</a></div>    <div class="right"> <a href="http://www.tutorialspoint.com/articles/how-to-configure-and-install-redis-on-ubuntu-linux" rel="next">Next &raquo;</a></div> 
+<div class="clear"></div></div> <!--end .postnavi-->
+<div class="clear"></div>
+<div class="tags">	 
+</div> <!--end .tags--></div> <!--end .entry-->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+<script type="text/javascript"><!--
+var width = 580;
+var height = 400;
+var format = "580x400_as";
+if( window.innerWidth < 468 ){
+   width = 300;
+   height = 250;
+   format = "300x250_as";
+}
+google_ad_client = "pub-7133395778201029";
+google_ad_width = width;
+google_ad_height = height;
+google_ad_format = format;
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="simple-ad">
+<a href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.facebook.com/sharer.php?u=' + 'http://www.tutorialspoint.com/articles/how-to-install-django-1-9-on-ubuntu','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="/images/facebookIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://twitter.com/share?url=' + 'http://www.tutorialspoint.com/articles/how-to-install-django-1-9-on-ubuntu','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="/images/twitterIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.linkedin.com/cws/share?url=' + 'http://www.tutorialspoint.com/articles/how-to-install-django-1-9-on-ubuntu&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="/images/linkedinIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://plus.google.com/share?url=http://www.tutorialspoint.com/articles/how-to-install-django-1-9-on-ubuntu','sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="/images/googlePlusIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://www.stumbleupon.com/submit?url=http://www.tutorialspoint.com/articles/how-to-install-django-1-9-on-ubuntu&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=456,top='+sTop+',left='+sLeft);return false;">
+<img src="/images/StumbleUponIcon.jpg" alt="img" />
+</a>
+<a  href="javascript:void(0)" onclick="var sTop = window.screen.height/2-(218); var sLeft = window.screen.width/2-(313);window.open('https://reddit.com/submit?url=http://www.tutorialspoint.com/articles/how-to-install-django-1-9-on-ubuntu&amp;title='+ document.title,'sharer','toolbar=0,status=0,width=626,height=656,top='+sTop+',left='+sLeft);return false;">
+<img src="/images/reddit.jpg" alt="img" />
+</a>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 300;
+google_ad_height = 600;
+google_ad_format = "300x600_as";
+google_ad_type = "image";
+google_ad_channel ="";
+//--></script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<div class="rightgooglead">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2537027957187252";
+/* Right Side Ad */
+google_ad_slot = "right_side_ad";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="index.htm" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="/scripts/img/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="/about/tutorials_writing.htm">Write for us</a></li>
+         <li><a href="/about/faq.htm">FAQ's</a></li>
+         <li><a href="/about/about_helping.htm">Helping</a></li>
+         <li><a href="/about/contact_us.htm">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>&copy; Copyright 2017. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input type="text" class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == 'Enter email for newsletter...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Enter email for newsletter...';}">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<script type="text/javascript" src="/theme/js/custom-min.js?v=4"></script>
+<script src="https://www.google-analytics.com/urchin.js">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+</div>
+</body>
+</html>
+UK��      X�ϻX�Ͼ=�7�       K    :http://www.tutorialspoint.com/articles/how-to-install-django-1-9-on-ubuntu necko:classified 1 strongly-framed 1 request-method GET request-User-Agent Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0 response-head HTTP/1.1 200 OK
+access-control-allow-headers: X-Requested-With
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=UTF-8
+Date: Sun, 16 Apr 2017 20:10:35 GMT
+Link: <http://www.tutorialspoint.com/articles/wp-json/>; rel="https://api.w.org/", <http://www.tutorialspoint.com/articles/?p=17940>; rel=shortlink
+Server: Apache/2.4.6 (CentOS)
+Vary: User-Agent
+ original-response-headers access-control-allow-headers: X-Requested-With
+Access-Control-Allow-Origin: *
+Content-Type: text/html; charset=UTF-8
+Date: Sun, 16 Apr 2017 20:10:35 GMT
+Link: <http://www.tutorialspoint.com/articles/wp-json/>; rel="https://api.w.org/"
+Link: <http://www.tutorialspoint.com/articles/?p=17940>; rel=shortlink
+Server: Apache/2.4.6 (CentOS)
+Vary: User-Agent
+Transfer-Encoding: chunked
+ charset UTF-8 uncompressed-len 0 predictor::resource-count 34 predictor::http://www.tutorialspoint.com/articles/wp-content/themes/bigfoot/style.css 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/theme/js/script-min-v4.js 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/theme/css/style-min.css?v=2 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/loading-cg.gif 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/logo.png 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/theme/css/icons/image-editor.png 1,1,1492373435,4097 predictor::http://www.tutorialspoint.com/articles/wp-content/uploads/userphoto/2690.thumbnail.jpg 1,1,1492373435,4097 predictor::http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-43-07-1024x181.png 1,1,1492373435,4097 predictor::http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-52-44.png 1,1,1492373435,4097 predictor::http://www.tutorialspoint.com/articles/wp-content/uploads/2016/05/Screenshot-from-2016-05-17-10-58-39-1024x318.png 1,1,1492373435,4097 predictor::https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js 1,1,1492373435,4097 predictor::https://pagead2.googlesyndication.com/pagead/show_ads.js 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/facebookIcon.jpg 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/twitterIcon.jpg 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/linkedinIcon.jpg 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/googlePlusIcon.jpg 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/StumbleUponIcon.jpg 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/reddit.jpg 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/scripts/img/logo-footer.png 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/theme/js/custom-min.js?v=4 1,1,1492373435,4097 predictor::https://www.google-analytics.com/urchin.js 1,1,1492373435,4097 net-response-time-onstart 1234 net-response-time-onstop 1889 predictor::https://pagead2.googlesyndication.com/pub-config/r20160913/ca-pub-7133395778201029.js 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/tools-menu.png 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/theme/img/social-sprites.png 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/tutor.png 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/link-icon.png 1,1,1492373435,4097 predictor::http://www.tutorialspoint.com/articles/wp-content/themes/bigfoot/images/icon-tag.png 1,1,1492373435,4097 predictor::https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/theme/css/fonts/font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0 1,1,1492373435,4097 predictor::https://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzBampu5_7CjHW5spxoeN3Vs.woff2 1,1,1492373435,4097 predictor::https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNShampu5_7CjHW5spxoeN3Vs.woff2 1,1,1492373435,4097 predictor::https://pagead2.googlesyndication.com/pagead/js/r20170410/r20170110/show_ads_impl.js 1,1,1492373435,4097 predictor::https://www.tutorialspoint.com/images/pattern.png 1,1,1492373435,4097 predictor::https://pagead2.googlesyndication.com/pagead/osd.js 1,1,1492373435,4097   Y]

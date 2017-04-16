@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="ROBOTS" content="ALL" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="MSSmartTagsPreventParsing" content="true" />
+    <meta name="Copyright" content="Django Software Foundation" />
+    <meta name="keywords" content="Python, Django, framework, open-source" />
+    <meta name="description" content="" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/s/img/icon-touch.e4872c4da341.png">
+    <link rel="icon" sizes="192x192" href="/s/img/icon-touch.e4872c4da341.png">
+    <link rel="shortcut icon" href="/s/img/favicon.6dbf28c0650e.ico">
+    <meta name="msapplication-TileColor" content="#113228">
+    <meta name="msapplication-TileImage" content="/s/img/icon-tile.b01ac0ef9f67.png">
+
+    <title>Pisanie pierwszej aplikacji Django, część 1. | Django documentation | Django</title>
+
+    <link rel="stylesheet" href="/s/css/output.979a53253070.css" >
+    <script src="/s/js/lib/webfontloader/webfontloader.e75218f5f090.js"></script>
+    <script>
+    WebFont.load({
+      custom: {
+        families: ['FontAwesome', 'Fira+Mono'],
+      },
+      google: {
+        families: ['Roboto:400italic,700italic,300,700,400:latin'
+        ]
+      },
+      classes: false,
+      events: false,
+      timeout: 1000
+    });
+    </script>
+    <script src="/s/js/lib/modernizr.3b36762e418a.js"></script>
+    
+  
+    
+      
+    
+  
+  <link rel="canonical" href="https://docs.djangoproject.com/pl/1.11/intro/tutorial01/">
+  
+    
+        
+          
+        
+        
+        <link rel="alternate"
+           hreflang="el"
+           href="https://docs.djangoproject.com/el/1.11/intro/tutorial01/">
+    
+        
+          
+        
+        
+        <link rel="alternate"
+           hreflang="x-default"
+           href="https://docs.djangoproject.com/en/1.11/intro/tutorial01/">
+        
+        <link rel="alternate"
+           hreflang="en"
+           href="https://docs.djangoproject.com/en/1.11/intro/tutorial01/">
+    
+        
+          
+        
+        
+        <link rel="alternate"
+           hreflang="es"
+           href="https://docs.djangoproject.com/es/1.11/intro/tutorial01/">
+    
+        
+          
+        
+        
+        <link rel="alternate"
+           hreflang="fr"
+           href="https://docs.djangoproject.com/fr/1.11/intro/tutorial01/">
+    
+        
+          
+        
+        
+        <link rel="alternate"
+           hreflang="id"
+           href="https://docs.djangoproject.com/id/1.11/intro/tutorial01/">
+    
+        
+          
+        
+        
+        <link rel="alternate"
+           hreflang="ja"
+           href="https://docs.djangoproject.com/ja/1.11/intro/tutorial01/">
+    
+        
+          
+        
+        
+        <link rel="alternate"
+           hreflang="pl"
+           href="https://docs.djangoproject.com/pl/1.11/intro/tutorial01/">
+    
+        
+          
+        
+        
+        <link rel="alternate"
+           hreflang="pt-br"
+           href="https://docs.djangoproject.com/pt-br/1.11/intro/tutorial01/">
+    
+  
+
+  <link rel="search"
+        type="application/opensearchdescription+xml"
+        href="https://docs.djangoproject.com/pl/1.11/search/description/"
+        title="Django documentation">
+
+  </head>
+
+  <body id="generic" class="">
+
+    <div role="banner" id="top">
+  <div class="container">
+    <a class="logo" href="https://www.djangoproject.com/">Django</a>
+    <p class="meta">The web framework for perfectionists with deadlines.</p>
+    <div role="navigation">
+      <ul>
+        <li>
+          <a href="https://www.djangoproject.com/start/overview/">Overview</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/download/">Download</a>
+        </li>
+        <li class="active">
+          <a href="https://docs.djangoproject.com/">Documentation</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/weblog/">News</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/community/">Community</a>
+        </li>
+        <li>
+          <a href="https://code.djangoproject.com/">Code</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/foundation/">About</a>
+        </li>
+        <li>
+          <a href="https://www.djangoproject.com/fundraising/">&#9829; Donate</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+    <div class="copy-banner">
+      <div class="container">
+        
+  <h1><a href="https://docs.djangoproject.com/pl/1.11/">Documentation</a></h1>
+
+      </div>
+    </div>
+    <div id="billboard"></div>
+
+    <div class="container sidebar-right">
+      <div role="main">
+
+        
+          
+        
+
+        
+<div id="version-switcher">
+  <ul id="doc-languages" class="language-switcher">
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/el/1.11/intro/tutorial01/">el</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/en/1.11/intro/tutorial01/">en</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/es/1.11/intro/tutorial01/">es</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/fr/1.11/intro/tutorial01/">fr</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/id/1.11/intro/tutorial01/">id</a>
+  </li>
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/ja/1.11/intro/tutorial01/">ja</a>
+  </li>
+  
+  
+  
+  
+  
+  <li class="other">
+    
+      
+    
+    <a href="https://docs.djangoproject.com/pt-br/1.11/intro/tutorial01/">pt-br</a>
+  </li>
+  
+  
+    <li class="current"
+        title="Click on the links on the left to switch to another language.">
+      <span>Language: <strong>pl</strong></span>
+    </li>
+  </ul>
+
+  
+  <ul id="doc-versions" class="version-switcher">
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/pl/1.10/intro/tutorial01/">1.10</a>
+    </li>
+    
+    
+    
+    
+    
+    <li class="other">
+      
+        
+      
+      <a href="https://docs.djangoproject.com/pl/dev/intro/tutorial01/">dev</a>
+    </li>
+    
+    
+    <li class="current"
+        title="This document describes Django 1.11. Click on the links on the left to see other versions.">
+       <span>Documentation version:
+         <strong>1.11</strong>
+       </span>
+    </li>
+  </ul>
+</div>
+
+
+<div id="docs-content">
+<div class="section" id="s-writing-your-first-django-app-part-1">
+<span id="writing-your-first-django-app-part-1"></span><h1>Pisanie pierwszej aplikacji Django, część 1.<a class="headerlink" href="#writing-your-first-django-app-part-1" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<p>Nauczmy się na przykładzie.</p>
+<p>Z pomocą tego tutoriala przeprowadzimy cię przez stworzenie prostej aplikacji ankietowej.</p>
+<p>Będzie ona się składało z dwóch części:</p>
+<ul class="simple">
+<li><p class="first">Publicznej strony, która pozwoli ludziom obejrzeć ankiety i głosować w nich.</p>
+</li>
+<li><p class="first">Panelu administracyjnego, który pozwoli ci dodawać, zmieniać i usuwać ankiety.</p>
+</li>
+</ul>
+<p>We&#8217;ll assume you have <a class="reference internal" href="../install/"><span class="doc">Django installed</span></a> already. You can
+tell Django is installed and which version by running the following command
+in a shell prompt (indicated by the $ prefix):</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python -m django --version
+</pre></div>
+</div>
+<p>Jeśli Django jest zainstalowane, powinieneś zobaczyć wersję swojej instalacji. Jeśli nie jest, dostaniesz błąd „No module named django”.</p>
+<p>Ten tutorial jest napisany dla Django 1.11 i Pythona 3.4 lub późniejszych. Jeśli wersja Django się nie zgadza, możesz przełączyć się na swoją wersję Django używając przełącznika wersji w prawym dolnym rogu tej strony, lub możesz zaktualizować Django do najnowszej wersji. Jeśli wciąż używasz Pythona 2.7, będziesz musiał dostosować nieco próbki kodu, według opisu w komentarzach.</p>
+<p>Zobacz <a class="reference internal" href="../../topics/install/"><span class="doc">Jak zainstalować Django</span></a>, by znaleźć wskazówki jak usunąć stare wersje Django i zainstalować nową.</p>
+<div class="admonition-where-to-get-help admonition">
+<p class="first admonition-title">Gdzie szukać pomocy:</p>
+<p class="last">Jeśli masz problemy z przejściem tego tutoriala, prosimy napisz wiadomość do <a class="reference internal" href="../../internals/mailing-lists/#django-users-mailing-list"><span class="std std-ref">django-users</span></a> lub wpadnij na <a class="reference external" href="irc://irc.freenode.net/django">#django na irc.freenode.net</a>, aby czatować z innymi użytkownikami Django, który mogą być w stanie udzielić pomocy.</p>
+</div>
+<div class="section" id="s-creating-a-project">
+<span id="creating-a-project"></span><h2>Tworzenie projektu<a class="headerlink" href="#creating-a-project" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Jeśli po raz pierwszy korzystasz z Django, będziesz musiał zająć się wstępną konfiguracją. Konkretnie, będziesz potrzebował wygenerować trochę kodu, który stworzy <a class="reference internal" href="../../glossary/#term-project"><span class="xref std std-term">projekt</span></a> Django – zbiór ustawień dla instacji Django, wliczając konfigurację bazy danych, ustawienia specyficzne dla Django i specyficzne dla aplikacji.</p>
+<p>Z linii komend, wejdź <code class="docutils literal"><span class="pre">cd</span></code> do katalogu, gdzie chciałbyś przechowywać swój kod, następnie uruchom następującą komendę:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> django-admin startproject mysite
+</pre></div>
+</div>
+<p>Stworzy ona katalog <code class="docutils literal"><span class="pre">mysite</span></code> w twoim bieżącym katalogu. Jeśli nie zadziałała, zobacz <a class="reference internal" href="../../faq/troubleshooting/#troubleshooting-django-admin"><span class="std std-ref">Problemy z uruchomieniem django-admin</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Informacja</p>
+<p class="last">Musisz unikać nazywania projektów tak samo jak wbudowane w Pythona albo Django komponenty. W szczególności znaczy to, że powinieneś unikać używania nazw jak <code class="docutils literal"><span class="pre">django</span></code> (co wejdzie w konflikt z samym Django) lub <code class="docutils literal"><span class="pre">test</span></code> (wejdzie w konflikt z wbudowanym pakietem Pythona).</p>
+</div>
+<div class="admonition-where-should-this-code-live admonition">
+<p class="first admonition-title">Gdzie powinien żyć ten kod?</p>
+<p>Jeśli w przeszłości używałeś zwykłego starego PHP (bez użycia nowoczesnych frameworków), prawdopodobnie zwykłeś umieszczać kod w głównym katalogu serwera WWW (takim jak <code class="docutils literal"><span class="pre">/var/www</span></code>). W Django nie robi się w ten sposób. Nie jest dobrym pomysłem umieszczać jakiegokolwiek z tego kodu Pythona w katalogu głównym serwera WWW, ponieważ stwarza to ryzyko pojawienia się możliwości, aby ktoś był w stanie widzieć twój kod w Internecie. Nie jest to bezpieczne.</p>
+<p class="last">Umieść swój kod w jakimś katalogu <strong>poza</strong> katalogiem głównym, na przykład w <code class="file docutils literal"><span class="pre">/home/mycode</span></code>.</p>
+</div>
+<p>Spójrzmy co stworzyło <a class="reference internal" href="../../ref/django-admin/#django-admin-startproject"><code class="xref std std-djadmin docutils literal"><span class="pre">startproject</span></code></a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mysite</span><span class="o">/</span>
+    <span class="n">manage</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">mysite</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">settings</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">urls</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">wsgi</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Te pliki to:</p>
+<ul class="simple">
+<li><p class="first">Zewnętrzny katalog główny <code class="file docutils literal"><span class="pre">mysite/</span></code> jest tylko pojemnikiem na twój projekt. Jego nazwa nie ma znaczenia dla Django; możesz zmienić jego nazwę na dowolną, jaką chcesz.</p>
+</li>
+<li><p class="first"><code class="file docutils literal"><span class="pre">manage.py</span></code>: Narzędzie linii komend, które pozwala ci oddziaływać z tym projektem Django na wiele sposobów. Możesz przeczytać szczegóły na temat <code class="file docutils literal"><span class="pre">manage.py</span></code> w <a class="reference internal" href="../../ref/django-admin/"><span class="doc">django-admin and manage.py</span></a>.</p>
+</li>
+<li><p class="first">Wewnętrzny katalog <code class="file docutils literal"><span class="pre">mysite/</span></code> jest właściwym pakietem Pythona dla twojego projektu. Jego nazwa jest nazwą pakietu Pythona, którą musisz używać, aby zaimportować cokolwiek w tym pakiecie (np. <code class="docutils literal"><span class="pre">mysite.urls</span></code>).</p>
+</li>
+<li><p class="first"><code class="file docutils literal"><span class="pre">mysite/__init__.py</span></code>: Pusty plik, który mówi Pythonowi, że ten katalog powinien być uważany za pakiet Pythona. Jeśli jesteś początkujący w Pythonie, przeczytaj <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html#tut-packages" title="(w Python v3.6)"><span class="xref std std-ref">więcej o pakietach</span></a> w oficjalnej dokumentacji Pythona.</p>
+</li>
+<li><p class="first"><code class="file docutils literal"><span class="pre">mysite/settings.py</span></code>: Ustawienia/konfiguracja dla tego projektu Django. <a class="reference internal" href="../../topics/settings/"><span class="doc">Django settings</span></a> powie ci wszystko o tym, jak działają ustawienia.</p>
+</li>
+<li><p class="first"><code class="file docutils literal"><span class="pre">mysite/urls.py</span></code>: Deklaracje URL-i dla tego projektu Django; „spis treści” twojej strony opartej na Django. Możesz przeczytać więcej o URL-ach w <a class="reference internal" href="../../topics/http/urls/"><span class="doc">URL dispatcher</span></a>.</p>
+</li>
+<li><p class="first"><code class="file docutils literal"><span class="pre">mysite/wsgi.py</span></code>: Punkt wejściowy dla serwerów WWW kompatybilnych z WSGI do serwowania twojego projektu. Zobacz <a class="reference internal" href="../../howto/deployment/wsgi/"><span class="doc">How to deploy with WSGI</span></a> dla większej ilości szczegółów.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="s-the-development-server">
+<span id="the-development-server"></span><h2>Serwer deweloperski<a class="headerlink" href="#the-development-server" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Zweryfikujmy czy twój projekt Django działa. Przejdź do zewnętrzenego katalogu <code class="file docutils literal"><span class="pre">mysite</span></code>, jeśli jeszcze tego nie zrobiłeś, i uruchom następujące polecenia:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py runserver
+</pre></div>
+</div>
+<p>Zobaczysz następujące wyjście w linii komend:</p>
+<pre class="literal-block">
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have unapplied migrations; your app may not work properly until they are applied.
+Run 'python manage.py migrate' to apply them.
+
+kwietnia 15, 2017 - 15:50:53
+Django version 1.11, using settings 'mysite.settings'
+Starting development server at <a class="reference external" href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a>
+Quit the server with CONTROL-C.
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Informacja</p>
+<p class="last">Zignoruj na razie ostrzeżenie o niezastosowanych migracjach bazy danych; zajmiemy się bazą danych za chwilę.</p>
+</div>
+<p>Wystartowałeś serwer deweloperski Django, lekki web-serwer napisany w całości w Pythonie. Zawarliśmy go w Django, abyś mógł dewelopować rzeczy błyskawicznie, nie musząc zajmować się konfiguracją produkcyjnego serwera – jak na przykład Apache – dopóki nie będziesz gotowy na produkcję.</p>
+<p>Teraz jest dobry moment, by zwrócić na to uwagę: <strong>nie</strong> używaj tego serwera w czymkolwiek podobnym do produkcyjnego środowiska. Jest on przewidziany tylko do użytku podczas dewelopmentu. (Jesteśmy w świecie tworzenia web-frameworków, nie web-serwerów.)</p>
+<p>Kiedy serwer jest już uruchomiony, odwiedź <a class="reference external" href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a> w swojej przeglądarce internetowej. Zobaczysz stronę „Welcome to Django”, w przyjemnych jasnoniebieskich pastelowych kolorach. Zadziałało!</p>
+<div class="admonition-changing-the-port admonition">
+<p class="first admonition-title">Zmiana portu</p>
+<p>Domyślnie komenda <a class="reference internal" href="../../ref/django-admin/#django-admin-runserver"><code class="xref std std-djadmin docutils literal"><span class="pre">runserver</span></code></a> uruchamia serwer deweloperski na wewnętrznym IP na porcie 8000.</p>
+<p>Jeśli chcesz zmienić port serwera, podaj go jako argument w linii komend. Na przykład, to polecenie uruchamia serwer na porcie 8080:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py runserver <span class="m">8080</span>
+</pre></div>
+</div>
+<p>If you want to change the server&#8217;s IP, pass it along with the port. For
+example, to listen on all available public IPs (which is useful if you are
+running Vagrant or want to show off your work on other computers on the
+network), use:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py runserver <span class="m">0</span>:8000
+</pre></div>
+</div>
+<p class="last"><strong>0</strong> is a shortcut for <strong>0.0.0.0</strong>. Full docs for the development server
+can be found in the <a class="reference internal" href="../../ref/django-admin/#django-admin-runserver"><code class="xref std std-djadmin docutils literal"><span class="pre">runserver</span></code></a> reference.</p>
+</div>
+<div class="admonition-automatic-reloading-of-djadmin-runserver admonition">
+<p class="first admonition-title">Automatyczne przeładowywanie <a class="reference internal" href="../../ref/django-admin/#django-admin-runserver"><code class="xref std std-djadmin docutils literal"><span class="pre">runserver</span></code></a></p>
+<p class="last">Serwer deweloperski automatycznie przeładowuje kod Pythona dla każdego żądania, wedle potrzeby. Nie musisz restartować serwera, aby zmiany w kodzie miały efekt. Jednakże niektóre działania, jak dodawanie plików, nie powodują restartu, więc będziesz musiał zrestartować serwer w tych przypadkach.</p>
+</div>
+</div>
+<div class="section" id="s-creating-the-polls-app">
+<span id="creating-the-polls-app"></span><h2>Tworzenie aplikacji Ankiety<a class="headerlink" href="#creating-the-polls-app" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Teraz, kiedy twoje środowisko – „projekt” – jest uruchomione, jesteś gotowy zabrać się do pracy.</p>
+<p>Każda aplikacjia, którą piszesz w Django, składa się z pakietu Pythona, który realizuję pewną konwencję. Django zawiera narzędzie, które automatycznie generuje podstawową strukturę katalogów aplikacji, abyś mógł skupić się na pisaniu kodu zamiast na tworzeniu katalogów.</p>
+<div class="admonition-projects-vs-apps admonition">
+<p class="first admonition-title">Projekty versus aplikacje</p>
+<p class="last">Jaka jest różnica pomiędzy projektem a aplikacją? Aplikacja jest aplikacją webową, która coś robi – na przykład system blogowy, baza danych publicznych wpisów lub prosta aplikacja ankietowa. Projekt jest zbiorem konfiguracji i aplikacji dla konkretnej witryny. Projekt może zawierać wiele aplikacji. Aplikacja może być w wielu projektach.</p>
+</div>
+<p>Twoje aplikacje mogą żyć gdziekolwiek na twojej <a class="reference external" href="https://docs.python.org/3/tutorial/modules.html#tut-searchpath" title="(w Python v3.6)"><span class="xref std std-ref">ścieżce Pythona</span></a>. W tym tutorialu stworzymy aplikację ankietową tużo obok twojego pliku <code class="file docutils literal"><span class="pre">manage.py</span></code>, aby mogła być zaimportowana jako jego własny moduł najwyższego poziomu, zamiast podmodułu <code class="docutils literal"><span class="pre">mysite</span></code>.</p>
+<p>Aby stworzyć swoją aplikację, upewnij się, że jesteś w tym samym katalogu co <code class="file docutils literal"><span class="pre">manage.py</span></code> i wpisz tę komendę:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py startapp polls
+</pre></div>
+</div>
+<p>Stworzy ona katalog <code class="file docutils literal"><span class="pre">polls</span></code>, który jest tak rozplanowany:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">polls</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">admin</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">apps</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">migrations</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">tests</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">views</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Ta struktora katalogów będzie domem dla aplikacji ankietowej.</p>
+</div>
+<div class="section" id="s-write-your-first-view">
+<span id="write-your-first-view"></span><h2>Napisz swój pierwszy widok<a class="headerlink" href="#write-your-first-view" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Napiszmy pierwszy widok. Otwórz plik <code class="docutils literal"><span class="pre">polls/views.py</span></code> i umieść tam następujący pythonowy kod:</p>
+<div class="highlight-default snippet"><div class="snippet-filename">polls/views.py</div>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.http</span> <span class="k">import</span> <span class="n">HttpResponse</span>
+
+
+<span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;Hello, world. You&#39;re at the polls index.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To jest najprostszy widok, jaki jest możliwy w Django. Aby go wywołać, potrzebujemy zmapować go na URL – i do tego potrzebujemy URLconf.</p>
+<p>Aby stworzyć URLconf w katalogu ankiet, stwórzmy plik o nazwie <code class="docutils literal"><span class="pre">urls.py</span></code>. Katalog twojej aplikacji powinien teraz wyglądać tak:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">polls</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">admin</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">apps</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">migrations</span><span class="o">/</span>
+        <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">tests</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">urls</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">views</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>W pliku <code class="docutils literal"><span class="pre">polls/urls.py</span></code> zawrzyj następujący kod:</p>
+<div class="highlight-default snippet"><div class="snippet-filename">polls/urls.py</div>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">url</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^$&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Następnym krokiem jest wskazanie URLconfowi w korzeniu na moduł <code class="docutils literal"><span class="pre">polls.urls</span></code>. W <code class="docutils literal"><span class="pre">mysite/urls.py</span></code> dodaj import dla <code class="docutils literal"><span class="pre">django.conf.urls.include</span></code> i wstaw <a class="reference internal" href="../../ref/urls/#django.conf.urls.include" title="django.conf.urls.include"><code class="xref py py-func docutils literal"><span class="pre">include()</span></code></a> na listę <code class="docutils literal"><span class="pre">urlpatterns</span></code>, aby mieć:</p>
+<div class="highlight-default snippet"><div class="snippet-filename">mysite/urls.py</div>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="k">import</span> <span class="n">include</span><span class="p">,</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="k">import</span> <span class="n">admin</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^polls/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;polls.urls&#39;</span><span class="p">)),</span>
+    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Funkcja <a class="reference internal" href="../../ref/urls/#django.conf.urls.include" title="django.conf.urls.include"><code class="xref py py-func docutils literal"><span class="pre">include()</span></code></a> function pozwala na odniesienia do innych URLconfów. Zwróć uwagę, że wyrażenia regularne dla funkcji <a class="reference internal" href="../../ref/urls/#django.conf.urls.include" title="django.conf.urls.include"><code class="xref py py-func docutils literal"><span class="pre">include()</span></code></a> nie zawierają <code class="docutils literal"><span class="pre">$</span></code> (znaku końca linii) ale ukośnik rozdzielający. Kiedykolwiek Django napotyka <a class="reference internal" href="../../ref/urls/#django.conf.urls.include" title="django.conf.urls.include"><code class="xref py py-func docutils literal"><span class="pre">include()</span></code></a>, odcina tę część URL-a, która została dopasowana do tego punktu i wysyła pozostłą część ciągu znaków do zaincludowanego URLconfa, do dalszego przetworzenia.</p>
+<p>Pomysłem leżącym za <a class="reference internal" href="../../ref/urls/#django.conf.urls.include" title="django.conf.urls.include"><code class="xref py py-func docutils literal"><span class="pre">include()</span></code></a> jest ułatwienie podłączania URL-i. Skoro ankiety są w swoim własnym URLconfie (<code class="docutils literal"><span class="pre">polls/urls.py</span></code>), mogą być umieszczone pod „/polls/” lub pod „/fun_polls/” lub pod „/content/polls/” lub dowolnym innym początkiem ścieżki i aplikacja wciąż będzie działać.</p>
+<div class="admonition-when-to-use-func-django-conf-urls-include admonition">
+<p class="first admonition-title">Kiedy używać <a class="reference internal" href="../../ref/urls/#django.conf.urls.include" title="django.conf.urls.include"><code class="xref py py-func docutils literal"><span class="pre">include()</span></code></a></p>
+<p class="last">Powinieneś używać <code class="docutils literal"><span class="pre">include()</span></code> zawsze, gdy uwzględniasz inne wzorce URL. <code class="docutils literal"><span class="pre">admin.site.urls</span></code> jest jedynym wyjątkiem od tej reguły.</p>
+</div>
+<div class="admonition-doesn-t-match-what-you-see admonition">
+<p class="first admonition-title">Nie zgadza się z tym, co widzisz?</p>
+<p class="last">Jeśli widzisz <code class="docutils literal"><span class="pre">include(admin.site.urls)</span></code> zamiast tylko <code class="docutils literal"><span class="pre">admin.site.urls</span></code>, prawdopodobnie używasz wersję Django, która nie jest zgodna z wersją tego tutoriala. Powinieneś przełączyć się albo na starszą wersję tutoriala, albo nowszą wersję Django.</p>
+</div>
+<p>Podłączyłeś właśnie widok <code class="docutils literal"><span class="pre">index</span></code> do URLconf. Zweryfikujmy, czy działa. Uruchom następujące polecenie:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py runserver
+</pre></div>
+</div>
+<p>Przejdź do <a class="reference external" href="http://localhost:8000/polls/">http://localhost:8000/polls/</a> w swojej przeglądarce. Powinieneś zobaczyć napis „<em>Hello, world. You&#8217;re at the polls index.</em>”, który zdefiniowałeś w widoku <code class="docutils literal"><span class="pre">index</span></code>.</p>
+<p>Do funkcji <a class="reference internal" href="../../ref/urls/#django.conf.urls.url" title="django.conf.urls.url"><code class="xref py py-func docutils literal"><span class="pre">url()</span></code></a> są przekazane cztery argumenty, dwa wymagane: <code class="docutils literal"><span class="pre">regex</span></code> i <code class="docutils literal"><span class="pre">view</span></code> oraz dwa opcjonalne: <code class="docutils literal"><span class="pre">kwargs</span></code> i <code class="docutils literal"><span class="pre">name</span></code>. Warto w tym momencie dowiedzieć się, do czego służą.</p>
+<div class="section" id="s-url-argument-regex">
+<span id="url-argument-regex"></span><h3>Argument <a class="reference internal" href="../../ref/urls/#django.conf.urls.url" title="django.conf.urls.url"><code class="xref py py-func docutils literal"><span class="pre">url()</span></code></a>: regex<a class="headerlink" href="#url-argument-regex" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Termin „regex” jest powszechnie używaną krótką formą oznaczającą „wyrażenie regularne”, które jest składnią do dopasowywania wzorców w ciągach znaków, lub w tym przypadku, wzorcach URL-i. Django zaczyna od pierwszego wyrażenia regularnego i idzie w dół listy, porównując zażądany URL z wszystkimi wyrażeniami regularnymi aż odnajdzie takie, które pasuje.</p>
+<p>Zwróć uwagę, że te wyrażenia regularne nie przeszukują parametrów GET i POST lub nazwy domeny. Na przykład, w żądaniu do <code class="docutils literal"><span class="pre">https://www.example.com/myapp/</span></code>, URLconf będzie szukał <code class="docutils literal"><span class="pre">myapp/</span></code>. W żądaniu do <code class="docutils literal"><span class="pre">https://www.example.com/myapp/?page=3</span></code>, URLconf też będzie szukał <code class="docutils literal"><span class="pre">myapp/</span></code>.</p>
+<p>Jeśli potrzebujesz pomocy z wyrażeniami regularnymi, zobacz <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">wpis na Wikipedii</a> i dokumentację modułu <a class="reference external" href="https://docs.python.org/3/library/re.html#module-re" title="(w Python v3.6)"><code class="xref py py-mod docutils literal"><span class="pre">re</span></code></a>. Również fantastyczna jest książka O&#8217;Reilly&#8217;ego „Mastering Regular Expressions” napisana przez Jeffreya Friedla. Jednakże w praktyce nie musisz być ekspertem od wyrażeń regularnych, bo tak naprawdę potrzebujesz jedynie wiedzieć jak wyłapywać proste wzorce. Tak naprawdę złożone wyrażenia regularne mogą mieć słabą wydajność wyszukiwania, więc prawdopodobnie nie powinieneś polegać na pełnej ich mocy.</p>
+<p>Ostatatecznie, uwaga na temat wydajności: te wyrażenia regularne są kompilowane, gdy po raz pierwszy ładowany jest moduł URLconf. Są super-szybkie (tak długo jak same wyrażenia nie są zbyt skomplikowane, tak jak zauważyliśmy wyżej).</p>
+</div>
+<div class="section" id="s-url-argument-view">
+<span id="url-argument-view"></span><h3>Argument <a class="reference internal" href="../../ref/urls/#django.conf.urls.url" title="django.conf.urls.url"><code class="xref py py-func docutils literal"><span class="pre">url()</span></code></a>: view<a class="headerlink" href="#url-argument-view" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Kiedy Django znajdzie pasujące wyrażenie regularne, wywołuje podaną funkcję widoku z obiektem <a class="reference internal" href="../../ref/request-response/#django.http.HttpRequest" title="django.http.HttpRequest"><code class="xref py py-class docutils literal"><span class="pre">HttpRequest</span></code></a> jako pierwszym argumentem i dowolnymi „złapanymi” wartościami z wyrażenia regularnego jako pozostałymi argumentami. Jeśli regex używa prostych złapań, wartości są przekazane jako argumenty pozycyjne; jeśli używa nazwanych złapań, wartości są przekazane jako argumenty nazwane. Za chwilę damy tego przykład.</p>
+</div>
+<div class="section" id="s-url-argument-kwargs">
+<span id="url-argument-kwargs"></span><h3>Argument <a class="reference internal" href="../../ref/urls/#django.conf.urls.url" title="django.conf.urls.url"><code class="xref py py-func docutils literal"><span class="pre">url()</span></code></a>: kwargs<a class="headerlink" href="#url-argument-kwargs" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Arbitralne argumenty słownikowe mogą być przekazane w słowniku do docelowego widoku. Nie będziemy używać tej funkcjonalności Django w tym tutorialu.</p>
+</div>
+<div class="section" id="s-url-argument-name">
+<span id="url-argument-name"></span><h3>Argument <a class="reference internal" href="../../ref/urls/#django.conf.urls.url" title="django.conf.urls.url"><code class="xref py py-func docutils literal"><span class="pre">url()</span></code></a>: name<a class="headerlink" href="#url-argument-name" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Nazwanie twojego URL-a pozwala odwołać się do niego jednoznacznie z każdego miejsca w Django, szczególnie z wnętrza szablonów. Ta potężna cecha pozwala ci na robienie globalnych zmian we wzorcach URL projektu przez zmianę w pojedynczym pliku.</p>
+<p>Jeśli czujesz się dobrze z przepływem żądań i odpowiedzi, przeczytaj <a class="reference internal" href="../tutorial02/"><span class="doc">drugą część tego tutoriala</span></a>, aby zacząć pracę z bazą danych.</p>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+<div class="browse-horizontal">
+  
+  <div class="left"><a href="../install/"><i class="icon icon-chevron-left"></i> Przewodnik szybkiej instalacji</a></div>
+  
+  
+  <div class="right"><a href="../tutorial02/">Pisanie pierwszej aplikacji Django, część 2. <i class="icon icon-chevron-right"></i></a></div>
+  
+</div>
+
+
+
+        <a href="#top" class="backtotop"><i class="icon icon-chevron-up"></i> Back to Top</a>
+      </div>
+
+      
+<h1 class="visuallyhidden">Additional Information</h1>
+<div role="complementary">
+  
+  
+
+<form action="https://docs.djangoproject.com/pl/1.11/search/" class="search form-input" role="search">
+  <label class="visuallyhidden" for="news-search">Search:</label>
+    <input id="id_q" name="q" placeholder="Search 1.11 documentation" type="search" />
+
+    <button type="submit">
+      <i class="icon icon-search"></i>
+      <span class="visuallyhidden">Szukaj</span>
+    </button>
+</form>
+
+  
+
+  
+
+
+  <div class="fundraising-sidebar">
+    <h2>Support Django!</h2>
+
+    <div class="small-heart">
+      <img src="/s/img/small-fundraising-heart.d255f6e934e5.png" alt="Support Django!" />
+    </div>
+
+    <div class="small-cta">
+      <ul class="list-links-small">
+        <li><a href="https://www.djangoproject.com/fundraising/">
+          Paolo Dina donated to the Django Software Foundation to
+          support Django development. Donate today!
+        </a></li>
+      </ul>
+    </div>
+  </div>
+
+
+
+  
+    <h2>Contents</h2>
+    
+    <ul>
+<li><a class="reference internal" href="#">Pisanie pierwszej aplikacji Django, część 1.</a><ul>
+<li><a class="reference internal" href="#creating-a-project">Tworzenie projektu</a></li>
+<li><a class="reference internal" href="#the-development-server">Serwer deweloperski</a></li>
+<li><a class="reference internal" href="#creating-the-polls-app">Tworzenie aplikacji Ankiety</a></li>
+<li><a class="reference internal" href="#write-your-first-view">Napisz swój pierwszy widok</a><ul>
+<li><a class="reference internal" href="#url-argument-regex">Argument <code class="docutils literal"><span class="pre">url()</span></code>: regex</a></li>
+<li><a class="reference internal" href="#url-argument-view">Argument <code class="docutils literal"><span class="pre">url()</span></code>: view</a></li>
+<li><a class="reference internal" href="#url-argument-kwargs">Argument <code class="docutils literal"><span class="pre">url()</span></code>: kwargs</a></li>
+<li><a class="reference internal" href="#url-argument-name">Argument <code class="docutils literal"><span class="pre">url()</span></code>: name</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    
+  
+
+  
+  <h2>Browse</h2>
+  <ul>
+    
+    
+    <li>Prev: <a href="../install/">Przewodnik szybkiej instalacji</a></li>
+    
+    
+    <li>Next: <a href="../tutorial02/">Pisanie pierwszej aplikacji Django, część 2.</a></li>
+    
+    <li><a href="https://docs.djangoproject.com/pl/1.11/contents/">Table of contents</a></li>
+    
+    <li><a href="https://docs.djangoproject.com/pl/1.11/genindex/">Indeks ogólny</a></li>
+    
+    <li><a href="https://docs.djangoproject.com/pl/1.11/py-modindex/">Indeks modułów pythona</a></li>
+    
+    
+  </ul>
+  
+
+  
+  <h2>You are here:</h2>
+  <ul>
+    <li>
+      <a href="https://docs.djangoproject.com/pl/1.11/">Django 1.11 documentation</a>
+      
+      <ul><li><a href="../">Pierwsze kroki</a>
+      
+      <ul><li>Pisanie pierwszej aplikacji Django, część 1.</li></ul>
+      </li></ul>
+    </li>
+  </ul>
+  
+
+  
+  <h2 id="getting-help-sidebar">Getting help</h2>
+  <dl class="list-links">
+    <dt><a href="https://docs.djangoproject.com/pl/1.11/faq/">FAQ</a></dt>
+    <dd>Try the FAQ — it's got answers to many common questions.</dd>
+
+    <dt><a href="/en/stable/genindex/">Index</a>, <a href="/en/stable/py-modindex/">Module Index</a>, or <a href="/en/stable/contents/">Table of Contents</a></dt>
+    <dd>Handy when looking for specific information.</dd>
+
+    <dt><a href="http://groups.google.com/group/django-users/">django-users mailing list</a></dt>
+    <dd>Search for information in the archives of the django-users mailing list, or post a question.</dd>
+
+    <dt><a href="irc://irc.freenode.net/django">#django IRC channel</a></dt>
+    <dd>Ask a question in the #django IRC channel, or search the IRC logs to see if it’s been asked before.</dd>
+
+    <dt><a href="http://code.djangoproject.com/">Ticket tracker</a></dt>
+    <dd>Report bugs with Django or Django documentation in our ticket tracker.</dd>
+  </dl>
+  
+
+  
+  <h2>Download:</h2>
+  <p>
+    Offline (Django 1.11):
+    <a href="/m/docs/django-docs-1.11-pl.zip">HTML</a> |
+    <a href="https://media.readthedocs.org/pdf/django/1.11.x/django.pdf">PDF</a> |
+    <a href="https://media.readthedocs.org/epub/django/1.11.x/django.epub">ePub</a>
+    <br>
+    <span class="quiet">
+      Provided by <a href="https://readthedocs.org/">Read the Docs</a>.
+    </span>
+  </p>
+  
+</div>
+
+      
+
+    </div>
+
+     
+     
+
+    
+    
+    
+
+    
+      
+<div role="contentinfo">
+  <div class="subfooter">
+    <div class="container">
+      <h1 class="visuallyhidden">Django Links</h1>
+
+      <div class="col learn">
+        <h2>Learn More</h2>
+        <ul>
+          <li><a href="https://www.djangoproject.com/start/overview/">About Django</a></li>
+          
+          <li><a href="https://www.djangoproject.com/start/">Getting Started with Django</a></li>
+          <li><a href="https://docs.djangoproject.com/en/dev/internals/organization/">Team Organization</a></li>
+          <li><a href="https://www.djangoproject.com/foundation/">Django Software Foundation</a></li>
+          <li><a href="https://www.djangoproject.com/conduct/">Code of Conduct</a></li>
+          <li><a href="https://www.djangoproject.com/diversity/">Diversity Statement</a></li>
+        </ul>
+      </div>
+
+      <div class="col involved">
+        <h2>Get Involved</h2>
+        <ul>
+          <li><a href="https://www.djangoproject.com/community/">Join a Group</a></li>
+          <li><a href="https://docs.djangoproject.com/en/dev/internals/contributing/">Contribute to Django</a></li>
+          <li><a href="https://docs.djangoproject.com/en/dev/internals/contributing/bugs-and-features/">Submit a Bug</a></li>
+          <li><a href="https://docs.djangoproject.com/en/dev/internals/security/#reporting-security-issues">Report a Security Issue</a></li>
+        </ul>
+      </div>
+
+      <div class="col follow last-child">
+        <h2>Follow Us</h2>
+        <ul>
+          <li><a href="https://github.com/django">GitHub</a></li>
+          <li><a href="https://twitter.com/djangoproject">Twitter</a></li>
+          <li><a href="https://www.djangoproject.com/rss/weblog/">News RSS</a></li>
+          <li><a href="https://groups.google.com/forum/#!forum/django-users">Django Users Mailing List</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <a class="logo" href="https://www.djangoproject.com/">Django</a>
+      </div>
+      <ul class="thanks">
+        <li>
+          <span>Hosting by</span> <a class="rackspace" href="http://rackspace.com">Rackspace</a>
+          <span>Search by</span> <a class="elastic" href="https://www.elastic.co">Elastic Search</a>
+        </li>
+        <li class="design"><span>Design by</span> <a class="threespot" href="http://www.threespot.com">Threespot</a> <span class="ampersand">&amp;</span> <a class="andrevv" href="http://andrevv.com/"></a></li>
+      </ul>
+      <p class="copyright">&copy; 2005-2017
+        <a href="https://www.djangoproject.com/foundation/"> Django Software
+        Foundation</a> and individual contributors. Django is a
+        <a href="https://www.djangoproject.com/trademarks/">registered
+        trademark</a> of the Django Software Foundation.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+    
+
+    
+    <script>
+    function extless(input) {
+        return input.replace(/(.*)\.[^.]+$/, '$1');
+    }
+    var require = {
+        shim: {
+            'jquery': [],
+            'jquery.inview': ["jquery"],
+            'jquery.payment': ["jquery"],
+            'jquery.flot': ["jquery"],
+            'jquery.unveil': ["jquery"],
+            'stripe': {
+              exports: 'Stripe'
+            }
+        },
+        paths: {
+            "jquery": extless("/s/js/lib/jquery/dist/jquery.min.87e69028f78d.js"),
+            "jquery.inview": extless("/s/js/lib/jquery.inview/jquery.inview.min.4edba1c65592.js"),
+            "jquery.payment": extless("/s/js/lib/jquery.payment/lib/jquery.payment.e99c05ca79ae.js"),
+            "jquery.unveil": extless("/s/js/lib/unveil/jquery.unveil.min.ac79eb277093.js"),
+            "jquery.flot": extless("/s/js/lib/jquery-flot/jquery.flot.min.9964206e9d7f.js"),
+            "clipboard": extless("/s/js/lib/clipboard/dist/clipboard.min.bd70fd596a23.js"),
+            "mod/floating-warning": extless("/s/js/mod/floating-warning.a21b2abd2884.js"),
+            "mod/list-collapsing": extless("/s/js/mod/list-collapsing.c1a08d3ef9e9.js"),
+            "mod/list-feature": extless("/s/js/mod/list-feature.73529480f25b.js"),
+            "mod/mobile-menu": extless("/s/js/mod/mobile-menu.841726ee903a.js"),
+            "mod/version-switcher": extless("/s/js/mod/version-switcher.c28bb83972bb.js"),
+            "mod/search-key": extless("/s/js/mod/search-key.f3c0a6fcfedd.js"),
+            "mod/stripe-custom-checkout": extless("/s/js/mod/stripe-custom-checkout.e299868f75aa.js"),
+            "mod/stripe-change-card": extless("/s/js/mod/stripe-change-card.c9e3d05f7a91.js"),
+            "stripe-checkout": "https://checkout.stripe.com/checkout",
+            "stripe": "https://js.stripe.com/v2/?"  // ? needed due to require.js
+        }
+    };
+    </script>
+    <script data-main="/s/js/main.3a2ae4b1529c.js" src="/s/js/lib/require.177879fbe7dd.js"></script>
+    
+
+
+
+  </body>
+</html>
+U�:	�      X��}X��=�8X�Ѩ   9    :https://docs.djangoproject.com/pl/1.11/intro/tutorial01/ necko:classified 1 strongly-framed 1 security-info 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 request-method GET request-Accept-Language en-US,en;q=0.5 response-head HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 16 Apr 2017 20:13:49 GMT
+Content-Type: text/html; charset=utf-8
+Last-Modified: Sun, 16 Apr 2017 20:13:49 GMT
+Content-Language: pl
+Expires: Sun, 16 Apr 2017 20:18:49 GMT
+X-Frame-Options: SAMEORIGIN
+Vary: Accept-Language, Cookie
+x-xss-protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Cache-Control: max-age=300
+Access-Control-Allow-Origin: https://code.djangoproject.com
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Public-Key-Pins-Report-Only: pin-sha256="og15UrKd7sLz7rIaFIsLD/n3qgqRrXmSQ37/d/8sqi8="; pin-sha256="deadbeefcafedeadbeefcafedeadbeefcafe1111111="; max-age=300; includeSubDomains; report-uri="https://djangoproject.report-uri.io/r/default/hpkp/reportOnly"
+ original-response-headers Server: nginx
+Date: Sun, 16 Apr 2017 20:13:49 GMT
+Content-Type: text/html; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Last-Modified: Sun, 16 Apr 2017 20:13:49 GMT
+Content-Language: pl
+Expires: Sun, 16 Apr 2017 20:18:49 GMT
+X-Frame-Options: SAMEORIGIN
+Vary: Accept-Language, Cookie
+x-xss-protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Cache-Control: max-age=300
+Access-Control-Allow-Origin: https://code.djangoproject.com
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+Public-Key-Pins-Report-Only: pin-sha256="og15UrKd7sLz7rIaFIsLD/n3qgqRrXmSQ37/d/8sqi8="; pin-sha256="deadbeefcafedeadbeefcafedeadbeefcafe1111111="; max-age=300; includeSubDomains; report-uri="https://djangoproject.report-uri.io/r/default/hpkp/reportOnly"
+ charset UTF-8 uncompressed-len 0 predictor::resource-count 27 predictor::https://docs.djangoproject.com/s/css/output.979a53253070.css 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/js/lib/webfontloader/webfontloader.e75218f5f090.js 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/js/lib/modernizr.3b36762e418a.js 1,1,1492373629,4096 predictor::https://fonts.googleapis.com/css?family=Roboto:400italic,700italic,300,700,400&subset=latin 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/img/logo-django.42234b631760.svg 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/fonts/fira-mono/FiraMono-Regular.690950e8d89c.woff 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/fonts/fira-mono/FiraMono-Bold.b6ef510e2306.woff 1,1,1492373629,4096 predictor::https://netdna.bootstrapcdn.com/font-awesome/4.2.0/fonts/fontawesome-webfont.woff?v=4.2.0 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/img/small-fundraising-heart.d255f6e934e5.png 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/js/lib/require.177879fbe7dd.js 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/img/logo-rackspace.f445a11160d6.svg 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/img/logo-elastic.1175f1e32ef3.svg 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/img/logo-threespot.6f9857ef0bb4.svg 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/img/logo-andrevv.6c6c6eb2ace8.svg 1,1,1492373629,4096 net-response-time-onstart 717 net-response-time-onstop 1010 predictor::https://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOFtXRa8TVwTICgirnJhmVJw.woff2 1,1,1492373629,4096 predictor::https://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfVtXRa8TVwTICgirnJhmVJw.woff2 1,1,1492373629,4096 predictor::https://fonts.gstatic.com/s/roboto/v15/CWB0XYA8bzo0kSThX0UTuA.woff2 1,1,1492373629,4096 predictor::https://fonts.gstatic.com/s/roboto/v15/Fcx7Wwv8OzT71A3E1XOAjvesZW2xOQ-xsNqO47m55DA.woff2 1,1,1492373629,4097 predictor::https://fonts.gstatic.com/s/roboto/v15/97uahxiqZRoncBaCEI3aWxJtnKITppOI_IvcXXDNrsc.woff2 1,1,1492373629,4097 predictor::https://fonts.gstatic.com/s/roboto/v15/vPcynSL0qHq_6dX7lKVByfesZW2xOQ-xsNqO47m55DA.woff2 1,1,1492373629,4097 predictor::https://docs.djangoproject.com/s/js/main.3a2ae4b1529c.js 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/js/mod/mobile-menu.841726ee903a.js 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/js/mod/version-switcher.c28bb83972bb.js 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/js/mod/search-key.f3c0a6fcfedd.js 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/js/mod/clippify.js 1,1,1492373629,4097 predictor::https://docs.djangoproject.com/s/js/lib/jquery/dist/jquery.min.87e69028f78d.js 1,1,1492373629,4096 predictor::https://docs.djangoproject.com/s/js/lib/clipboard/dist/clipboard.min.bd70fd596a23.js 1,1,1492373629,4097   ��
